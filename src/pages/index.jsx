@@ -1,6 +1,6 @@
 import Head from 'next/head'
-// import { SignedIn, SignedOut } from '@clerk/nextjs'
-// import { withServerSideAuth } from '@clerk/nextjs/ssr'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
+//import { withServerSideAuth } from '@clerk/nextjs/ssr'
 import React from 'react'
 import Link from 'next/link'
 import { CallToAction } from '@/components/CallToAction'
@@ -12,12 +12,14 @@ import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
+import { UserButton, auth } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
 
-// export const getServerSideProps = withServerSideAuth()
+//export const getServerSideProps = withServerSideAuth()
 
 const SignupLink = () => (
   <Link href="/sign-up">
-    <a className="">
+    <div className="">
       <img alt="Sign up" src="/icons/user-plus.svg" />
       <div>
         <h3>Sign up for an account</h3>
@@ -26,11 +28,14 @@ const SignupLink = () => (
       <div className="">
         <img src="/icons/arrow-right.svg" />
       </div>
-    </a>
+    </div>
   </Link>
 )
 
 export default function Home() {
+  const { user } = useUser();
+  const userId = user ? user.id : null;
+  
   return (
     <>
       <Head>
@@ -46,6 +51,23 @@ export default function Home() {
           Sign up for an account to get started <SignupLink />
         </p>
       </SignedOut> */}
+      {!userId && (
+          <>
+            <Link
+              href='sign-in'
+              className='text-gray-300 hover:text-white mr-4'
+            >
+              Sign In
+            </Link>
+            <Link
+              href='sign-up'
+              className='text-gray-300 hover:text-white mr-4'
+            >
+              Sign Up
+            </Link>
+          </>
+        )}
+
       <main>
         <Hero />
         <PrimaryFeatures />

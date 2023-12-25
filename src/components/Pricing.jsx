@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { ButtonLink } from '@/components/Button'
+import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 
 function Plan({ name, price, description, href, features, featured = false }) {
@@ -56,7 +56,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
           </li>
         ))}
       </ul>
-      <ButtonLink
+      <Button
         href={href}
         variant={featured ? 'solid' : 'outline'}
         color="white"
@@ -64,7 +64,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
         aria-label={`Get started with ${name} plan for ${price}`}
       >
         Get started
-      </ButtonLink>
+      </Button>
     </section>
   )
 }

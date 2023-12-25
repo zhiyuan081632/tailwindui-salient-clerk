@@ -10,7 +10,8 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "@clerk/nextjs": "^3.6.6",
+    "@clerk/nextjs": "^4.21.8",
+    "@clerk/themes": "^1.7.5",
     "@docsearch/react": "^3.1.0",
     "@headlessui/react": "^1.6.5",
     "@tailwindcss/forms": "^0.5.2",
@@ -18,7 +19,7 @@
     "autoprefixer": "^10.4.7",
     "clsx": "^1.1.1",
     "focus-visible": "^5.2.0",
-    "next": "12.1.6",
+    "next": "13.4.7",
     "postcss-focus-visible": "^6.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

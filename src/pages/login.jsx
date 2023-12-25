@@ -14,9 +14,7 @@ export default function Login() {
       <AuthLayout>
         <div className="flex flex-col items-start justify-start">
           <Link href="/">
-            <a>
               <Logo className="mb-2 h-10 w-auto" />
-            </a>
           </Link>
           <h2 className="mt-16 text-lg font-semibold text-gray-900">
             Sign in to your account
