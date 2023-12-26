@@ -119,20 +119,15 @@ export function Header() {
             */}
 
             <SignedOut>
-              <li className="border-t border-slate-300/40 pt-4">
-                {/* <Link href="/sign-in">
-                  <a className="block w-full">Sign in</a>
-                </Link> */}
-                <NavLink href="/sign-in">Sign in</NavLink>
-              </li>
+              <NavLink href="/sign-in">Sign in</NavLink>   
             </SignedOut>     
                 
             <SignedIn>
               <UserButton userProfileURL="/user" afterSignOutAll="/" afterSignOutOneUrl="/" />
             </SignedIn>
-            <Button href="/register" color="blue">
+            <Button href="/sign-up" color="blue">
               <span>
-                Get started <span className="hidden lg:inline">today</span>
+                Sign up <span className="hidden lg:inline"></span>
               </span>
             </Button>
 
