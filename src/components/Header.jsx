@@ -108,7 +108,8 @@ export function Header() {
             </div>
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
-            {/* <div className="hidden md:block">
+            {/* 
+            <div className="hidden md:block">
               <NavLink href="/sign-in">Sign in</NavLink>
             </div> 
             <Button href="/register" color="blue">
@@ -121,7 +122,7 @@ export function Header() {
             <SignedOut>
               <NavLink href="/sign-in">Sign in</NavLink>   
             </SignedOut>     
-                
+            
             <SignedIn>
               <UserButton userProfileURL="/user" afterSignOutAll="/" afterSignOutOneUrl="/" />
             </SignedIn>
@@ -130,6 +131,7 @@ export function Header() {
                 Sign up <span className="hidden lg:inline"></span>
               </span>
             </Button>
+
 
             <div className="-mr-1 md:hidden">
               <MobileNavigation />
