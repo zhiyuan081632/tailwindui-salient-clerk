@@ -10,6 +10,7 @@ import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs';
 
 function MobileNavLink({ href, children }) {
   return (
@@ -84,7 +85,7 @@ function MobileNavigation() {
             <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
             <MobileNavLink href="#pricing">Pricing</MobileNavLink>
             <hr className="m-2 border-slate-300/40" />
-            <MobileNavLink href="/login">Sign in</MobileNavLink>
+            {/* <MobileNavLink href="/login">Sign in</MobileNavLink> */}
           </Popover.Panel>
         </Transition.Child>
       </Transition.Root>
@@ -93,6 +94,10 @@ function MobileNavigation() {
 }
 
 export function Header() {
+  const { user } = useUser();
+  const userId = user ? user.id : null;
+  console.log('userId: ', userId)
+
   return (
     <header className="py-10">
       <Container>
@@ -108,30 +113,26 @@ export function Header() {
             </div>
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
-            {/* 
-            <div className="hidden md:block">
-              <NavLink href="/sign-in">Sign in</NavLink>
-            </div> 
-            <Button href="/register" color="blue">
-              <span>
-                Get started <span className="hidden lg:inline">today</span>
-              </span>
-            </Button>
-            */}
+            {!userId && (
+              <>
+                <div className="hidden md:block">
+                  <NavLink href="/sign-in">Sign in</NavLink>
+                </div> 
+                <Button href="/sign-up" color="blue">
+                  <span>
+                    Sign up <span className="hidden lg:inline"></span>
+                  </span>
+                </Button>
+              </>
+            )} 
 
-            <SignedOut>
-              <NavLink href="/sign-in">Sign in</NavLink>   
-            </SignedOut>     
-            
-            <SignedIn>
-              <UserButton userProfileURL="/user" afterSignOutAll="/" afterSignOutOneUrl="/" />
-            </SignedIn>
-            <Button href="/sign-up" color="blue">
-              <span>
-                Sign up <span className="hidden lg:inline"></span>
-              </span>
-            </Button>
-
+            {userId && (
+              <>
+                <SignedIn>
+                  <UserButton userProfileURL="/" afterSignOutUrl='/' afterSignOutAll="/" afterSignOutOneUrl="/" />
+                </SignedIn>
+              </>
+            )} 
 
             <div className="-mr-1 md:hidden">
               <MobileNavigation />

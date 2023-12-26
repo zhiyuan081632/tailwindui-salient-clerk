@@ -12,7 +12,7 @@ import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
-import { UserButton, auth } from '@clerk/nextjs';
+import { UserButton } from '@clerk/nextjs';
 import { useUser } from '@clerk/nextjs';
 
 //export const getServerSideProps = withServerSideAuth()
@@ -33,8 +33,6 @@ const SignupLink = () => (
 )
 
 export default function Home() {
-  const { user } = useUser();
-  const userId = user ? user.id : null;
   
   return (
     <>
@@ -43,31 +41,6 @@ export default function Home() {
         <meta name="description" content="Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited." />
       </Head>
       <Header />
-      {/* <SignedIn>
-        <p className="bg-red-400 p-8">You have successfully signed in</p>
-      </SignedIn>
-      <SignedOut>
-        <p className="bg-red-400 p-8">
-          Sign up for an account to get started <SignupLink />
-        </p>
-      </SignedOut> */}
-      {!userId && (
-          <>
-            <Link
-              href='sign-in'
-              className='text-gray-300 hover:text-white mr-4'
-            >
-              Sign In
-            </Link>
-            <Link
-              href='sign-up'
-              className='text-gray-300 hover:text-white mr-4'
-            >
-              Sign Up
-            </Link>
-          </>
-        )}
-
       <main>
         <Hero />
         <PrimaryFeatures />
